@@ -11,8 +11,14 @@ package 'git' do
 end
 
 file '/etc/motd' do
-  #content "Property of Chef. Welcome #{ENV['USR']}!" 
-  content "Property of Chef. Welcome!" 
+  content "Property of Chef. Welcome! 
+  
+  IPADDRESS: #{node["ipaddress"]}
+  HOSTNAME : #{node["hostname"]}
+  MEMORY   : #{node["memory"]["total"]}
+  CPU      : #{node["cpu"]["0"]["mhz"]}
+
+  " 
   action :create
 end
 
